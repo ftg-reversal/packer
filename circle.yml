@@ -1,0 +1,22 @@
+machine:
+  environment:
+    PATH: $HOME/.packer:$PATH
+    PACKER_VERSION: 0.10.1
+
+dependencies:
+  cache_directories:
+    - ~/.packer
+  pre:
+    - |
+      mkdir -p $HOME/.packer
+      if [ -z "$(ls -A $HOME/.packer)" ]; then
+        cd $HOME/.packer
+        curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip
+        unzip packer_${PACKER_VERSION}_linux_amd64.zip
+        rm packer_${PACKER_VERSION}_linux_amd64.zip
+      fi
+
+test:
+  post:
+    - packer build -var "pass=$PASS" app.json:
+        timeout: 1800

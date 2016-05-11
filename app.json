@@ -1,0 +1,37 @@
+{
+    "variables": {
+        "vpc_id": "vpc-a0ab8cc5",
+        "subnet_id": "subnet-2a1a3d73",
+        "source_ami": "ami-f80e0596",
+        "pass": ""
+    },
+    "builders": [ {
+        "type": "amazon-ebs",
+        "region": "ap-northeast-1",
+        "source_ami": "{{user `source_ami`}}",
+        "instance_type": "t2.micro",
+        "ssh_username": "ec2-user",
+        "vpc_id": "{{user `vpc_id`}}",
+        "subnet_id": "{{user `subnet_id`}}",
+        "associate_public_ip_address": "true",
+        "enhanced_networking": "true",
+        "ami_name": "app_{{isotime | clean_ami_name}}"
+    } ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo yum -y update",
+                "sudo pip install ansible"
+            ]
+        },
+        {
+          "type": "ansible-local",
+          "playbook_file": "ansible/setup.yml",
+          "role_paths": ["ansible/roles/rbenv", "ansible/roles/env", "ansible/roles/nginx"],
+          "staging_directory": "/tmp/packer-provisioner-ansible-local",
+          "command": "echo '{{user `pass`}}' | ansible-playbook",
+          "extra_arguments": "--vault-password-file=/bin/cat"
+        }
+    ]
+}
