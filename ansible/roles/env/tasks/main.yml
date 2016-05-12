@@ -33,4 +33,4 @@
     - mysql
 
 - name: Set application environment
-  template: src=rails.j2 dest=/etc/profile.d/rails
+  template: src=rails.sh.j2 dest=/etc/profile.d/rails.sh
