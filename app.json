@@ -1,7 +1,7 @@
 {
     "variables": {
-        "vpc_id": "vpc-a0ab8cc5",
-        "subnet_id": "subnet-2a1a3d73",
+        "vpc_id": "vpc-d76142b2",
+        "subnet_id": "subnet-de93b387",
         "source_ami": "ami-f80e0596",
         "pass": ""
     },
