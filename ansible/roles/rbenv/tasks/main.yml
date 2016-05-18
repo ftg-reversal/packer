@@ -59,7 +59,9 @@
 
 - name: Set default ruby version
   command: sudo -iu {{ rbenv_user }} rbenv global {{ rbenv_ruby_version }}
-  when: rbenv_check_default|failed
+
+- name: rbenv rehash
+  command: sudo -iu {{ rbenv_user }} rbenv rehash
 
 - name: Install bundler
   command: sudo -iu {{ rbenv_user }} gem install {{ item }}
