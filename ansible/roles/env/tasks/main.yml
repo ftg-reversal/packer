@@ -31,6 +31,7 @@
   yum: name={{ item }} state=latest
   with_items:
     - mysql
+    - mysql-devel
 
 - name: Set application environment
   template: src=rails.sh.j2 dest=/etc/profile.d/rails.sh
