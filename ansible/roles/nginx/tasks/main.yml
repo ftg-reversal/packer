@@ -8,6 +8,9 @@
 - name: Put conf.d/rails.conf
   copy: src=rails.conf dest=/etc/nginx/conf.d/rails.conf
 
+- name: Change directory owner
+  command: chown -R ec2-user /var/lib/nginx/
+
 - name: Set auto start nginx
   command: chkconfig nginx on
 
