@@ -24,6 +24,9 @@
     state=link
     force=yes
 
+- name: Make swapfile
+  command: dd if=/dev/zero of=/swapfile bs=1M count=1024 && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+
 - name: yum update
   yum: state=latest name=*
 
