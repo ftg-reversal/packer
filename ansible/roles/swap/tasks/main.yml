@@ -1,0 +1,11 @@
+---
+- name: Create swap file
+  command: fallocate -l 1G /swapfile
+- name: Format swap file
+  command: mkswap /swapfile
+- name: Change permission
+  file: path=/swapfile owner=root group=root mode=0600
+- name: Add the file to the system as a swap file
+  command: swapon /swapfile
+- name: Write swap entry in /etc/fstab
+  mount: name=swap src=/swapfile fstype=swap opts=defaults passno=0 dump=0 state=present
