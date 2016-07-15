@@ -1,0 +1,13 @@
+---
+- name: Setup rpm
+  shell: rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm
+
+- name: Install newrelic
+  shell: yum install -y newrelic-sysmond
+
+- name: Set newrelic config
+  shell: "nrsysmond-config --set license_key={{ license_key }}"
+
+- name: Set newrelic service
+  shell: chkconfig newrelic-sysmond on
+

@@ -31,6 +31,7 @@
           "role_paths": [
               "ansible/roles/datadog",
               "ansible/roles/env",
+              "ansible/roles/newrelic",
               "ansible/roles/nginx",
               "ansible/roles/rbenv",
               "ansible/roles/swap"

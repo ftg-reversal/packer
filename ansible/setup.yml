@@ -4,6 +4,7 @@
   roles:
     - datadog
     - env
+    - newrelic
     - nginx
     - rbenv
     - swap
