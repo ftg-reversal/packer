@@ -28,7 +28,13 @@
         {
           "type": "ansible-local",
           "playbook_file": "ansible/setup.yml",
-          "role_paths": ["ansible/roles/env", "ansible/roles/swap", "ansible/roles/rbenv", "ansible/roles/nginx"],
+          "role_paths": [
+              "ansible/roles/datadog",
+              "ansible/roles/env",
+              "ansible/roles/nginx",
+              "ansible/roles/rbenv",
+              "ansible/roles/swap"
+          ],
           "staging_directory": "/tmp/packer-provisioner-ansible-local",
           "command": "echo '{{user `pass`}}' | ansible-playbook",
           "extra_arguments": "--vault-password-file=/bin/cat"
