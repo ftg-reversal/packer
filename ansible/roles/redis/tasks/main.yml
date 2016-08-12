@@ -1,0 +1,12 @@
+---
+- name: Install remi repo
+  yum: name=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+
+- name: Install Redis
+  yum: name=redis enablerepo=remi state=latest
+
+- name: Put redis.conf
+  copy: src=redis.conf dest=/etc/redis.conf
+
+- name: chkconfig redis on
+  service: name=redis enabled=yes
