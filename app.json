@@ -41,5 +41,11 @@
           "command": "echo '{{user `pass`}}' | ansible-playbook",
           "extra_arguments": "--vault-password-file=/bin/cat"
         }
-    ]
+    ],
+    "post-processors":[{
+      "type": "amazon-ami-management",
+      "region": "ap-northeast-1",
+      "identifier": "app",
+      "keep_releases": "3"
+    }]
 }

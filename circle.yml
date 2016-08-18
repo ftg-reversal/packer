@@ -14,6 +14,12 @@ dependencies:
         curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip
         unzip packer_${PACKER_VERSION}_linux_amd64.zip
         rm packer_${PACKER_VERSION}_linux_amd64.zip
+
+        mkdir -p $HOME/.packer.d/plugins
+        curl -LO https://github.com/wata727/packer-post-processor-amazon-ami-management/releases/download/v0.1.0/packer-post-processor-amazon-ami-management_linux_amd64.zip
+        unzip packer-post-processor-amazon-ami-management_linux_amd64.zip
+        mv dist/linux_amd64/packer-post-processor-amazon-ami-management $HOME/.packer.d/plugins
+        rm packer-post-processor-amazon-ami-management_linux_amd64.zip
       fi
 
 test:
