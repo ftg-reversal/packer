@@ -27,6 +27,11 @@
 - name: yum update
   yum: state=latest name=*
 
+- name: Install sysstat
+  yum: name={{ item }} state=latest
+  with_items:
+    - sysstat
+
 - name: Install MySQL
   yum: name={{ item }} state=latest
   with_items:
