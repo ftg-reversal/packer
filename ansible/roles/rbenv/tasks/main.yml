@@ -43,7 +43,7 @@
 
 - name: Check if version is installed ruby
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: rbenv versions | grep {{ rbenv_ruby_version }}
   register: rbenv_check_install
   changed_when: False
@@ -51,13 +51,13 @@
 
 - name: Install ruby
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: rbenv install {{ rbenv_ruby_version }}
   when: rbenv_check_install|failed
 
 - name: Check if version is the default ruby version
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: rbenv version | grep {{ rbenv_ruby_version }}
   register: rbenv_check_default
   changed_when: False
@@ -65,17 +65,17 @@
 
 - name: Set default ruby version
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: rbenv global {{ rbenv_ruby_version }}
 
 - name: rbenv rehash
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: rbenv rehash
 
 - name: Install bundler
   become: yes
-  become_user: {{ rbenv_user }}
+  become_user: "{{ rbenv_user }}"
   command: gem install {{ item }}
   with_items:
     - bundler
