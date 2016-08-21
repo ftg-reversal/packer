@@ -6,6 +6,7 @@ machine:
 dependencies:
   cache_directories:
     - ~/.packer
+    - ~/.packer.d
   pre:
     - |
       mkdir -p $HOME/.packer
