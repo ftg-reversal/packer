@@ -34,7 +34,6 @@
               "ansible/roles/newrelic",
               "ansible/roles/nginx",
               "ansible/roles/rbenv",
-              "ansible/roles/redis",
               "ansible/roles/swap"
           ],
           "staging_directory": "/tmp/packer-provisioner-ansible-local",
