@@ -1,7 +1,7 @@
 machine:
   environment:
     PATH: $HOME/.packer:$PATH
-    PACKER_VERSION: 0.10.1
+    PACKER_VERSION: 0.12.2
 
 dependencies:
   cache_directories:
